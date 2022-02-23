@@ -17,6 +17,6 @@ public class CharacterController : MonoBehaviour
         GetComponent<Rigidbody>().velocity = new Vector3(
             joystick.Horizontal * 6f,
             GetComponent<Rigidbody>().velocity.y,
-            2f);
+            4f);
     }
 }
