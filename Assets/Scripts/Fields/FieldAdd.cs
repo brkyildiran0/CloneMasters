@@ -29,36 +29,32 @@ public class FieldAdd : MonoBehaviour
             for (int i = 0; i < amountToSpawn; i++)
             {
                 int randGenerator = Random.Range(0, 4);
-                if (randGenerator == 0)
+
+                switch (randGenerator)
                 {
-                    GameObject prefabStickman = Instantiate(stickman,
-                    stickmanCenter.transform.position + new Vector3(-0.3f,0f,0f),
-                    Quaternion.identity);
-                    prefabStickman.transform.SetParent(stickmanCenter.transform);
-                }
-                else if (randGenerator == 1)
-                {
-                    GameObject prefabStickman = Instantiate(stickman,
-                    stickmanCenter.transform.position + new Vector3(0f, 0f, -0.3f),
-                    Quaternion.identity);
-                    prefabStickman.transform.SetParent(stickmanCenter.transform);
-                }
-                else if (randGenerator == 2)
-                {
-                    GameObject prefabStickman = Instantiate(stickman,
-                    stickmanCenter.transform.position + new Vector3(0.3f, 0f, 0f),
-                    Quaternion.identity);
-                    prefabStickman.transform.SetParent(stickmanCenter.transform);
-                }
-                else
-                {
-                    GameObject prefabStickman = Instantiate(stickman,
-                    stickmanCenter.transform.position + new Vector3(0f, 0f, 0.3f),
-                    Quaternion.identity);
-                    prefabStickman.transform.SetParent(stickmanCenter.transform);
+                    case 0:
+                        spawnPosition(-0.3f, 0f);
+                        break;
+                    case 1:
+                        spawnPosition(0f, -0.3f);
+                        break;
+                    case 2:
+                        spawnPosition(0.3f, 0f);
+                        break;
+                    case 3:
+                        spawnPosition(0f, 0.3f);
+                        break;
                 }
             }
             triggeredOnce = true;
         }
+    }
+
+    private void spawnPosition(float xPos, float zPos)
+    {
+        GameObject prefabStickman = Instantiate(stickman,
+                    stickmanCenter.transform.position + new Vector3(xPos, 0f, zPos),
+                    Quaternion.identity);
+        prefabStickman.transform.SetParent(stickmanCenter.transform);
     }
 }
