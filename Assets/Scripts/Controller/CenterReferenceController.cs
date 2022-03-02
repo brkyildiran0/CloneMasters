@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StickmanCenterController : MonoBehaviour
+public class CenterReferenceController : MonoBehaviour
 {
     protected Joystick joystick;
-
+    
 
     void Start()
     {
@@ -16,7 +16,7 @@ public class StickmanCenterController : MonoBehaviour
     {
         GetComponent<Rigidbody>().velocity = new Vector3(
             joystick.Horizontal * 6f,
-            0.6f,
+            0,
             4f);
     }
 }

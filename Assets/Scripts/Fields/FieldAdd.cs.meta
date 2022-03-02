@@ -4,7 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - stickman: {fileID: 7261408012235219778, guid: 4625be116f0cb4f608644fba05461381, type: 3}
+  - stickmanCenter: {instanceID: 0}
+  - stickman: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
