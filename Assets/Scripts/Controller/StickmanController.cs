@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class StickmanController : MonoBehaviour
 {
-    public GameObject centerReference;
+    private GameObject centerReference;
 
     void Start()
     {
+        centerReference = GameObject.Find("StickmanCenterReference");
         GetComponent<Rigidbody>().velocity = centerReference.GetComponent<Rigidbody>().velocity;
     }
 
