@@ -16,5 +16,16 @@ public class CenterReferenceController : MonoBehaviour
     void Update()
     {
         GetComponent<Rigidbody>().velocity = new Vector3((joystick.Horizontal * 9), 0, 5);
+
+        if (transform.position.x < -4.8f && transform.position.x < 0f)
+        {
+            transform.position = new Vector3(-4.79f, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.x > 4.8f && transform.position.x > 0f)
+        {
+            transform.position = new Vector3(4.79f, transform.position.y, transform.position.z);
+        }
+
     }
 }
