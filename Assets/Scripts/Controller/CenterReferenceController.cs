@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class CenterReferenceController : MonoBehaviour
 {
     protected Joystick joystick;
+    GameObject gameOverScreen;
 
     void Start()
     {
         joystick = FindObjectOfType<Joystick>();
+        gameOverScreen = GameObject.Find("WorldCanvas");
     }
     
     void Update()
@@ -27,5 +29,10 @@ public class CenterReferenceController : MonoBehaviour
             transform.position = new Vector3(4.79f, transform.position.y, transform.position.z);
         }
 
+        if (transform.childCount == 0)
+        {
+            Time.timeScale = 0;
+            gameOverScreen.transform.GetChild(gameOverScreen.transform.childCount - 1).gameObject.SetActive(true);
+        }
     }
 }

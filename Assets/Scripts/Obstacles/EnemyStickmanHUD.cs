@@ -6,16 +6,27 @@ public class EnemyStickmanHUD : MonoBehaviour
 {
     public GameObject go;
     private TextMesh HUDText;
+    public bool flag;
 
     void Start()
     {
         HUDText = GetComponent<TextMesh>();
-        go = GameObject.Find("Horde 1");
+        flag = false;
     }
 
     void Update()
     {
         transform.position = go.transform.position + new Vector3(0, 1.2f, 0);
-        HUDText.text = go.transform.childCount.ToString();
+        
+        if (!flag)
+        {
+            HUDText.text = go.transform.childCount.ToString();
+
+            if (HUDText.text.Equals("0"))
+            {
+                Object.Destroy(GetComponent<TextMesh>());
+                flag = true;
+            }
+        }
     }
 }

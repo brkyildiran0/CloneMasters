@@ -17,15 +17,28 @@ public class EnemyStickman : MonoBehaviour
 
     void Update()
     {
-        if (hordeCenterPosition.z - playerStickman.transform.position.z < 3.0f)
+        if (playerStickman.transform.childCount != 0)
         {
-            transform.position = Vector3.MoveTowards(transform.position, playerStickman.transform.position, 2f * Time.deltaTime);
-            
-            while (playerStickman.transform.childCount > 0)
+            if (hordeCenterPosition.z - playerStickman.transform.position.z < 3.0f)
             {
-                playerStickman.transform.position = Vector3.zero;
+                transform.position = Vector3.MoveTowards(transform.position, playerStickman.transform.position, 2f * Time.deltaTime);
+                animator.Play("Punch");
             }
 
+            if (transform.position.z - playerStickman.transform.position.z < 0.4f)
+            {
+                Object.Destroy(gameObject);
+                Object.Destroy(playerStickman.transform.GetChild(0).gameObject);
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Stickman")
+        {
+            Object.Destroy(collision.gameObject);
+            Object.Destroy(gameObject);
         }
     }
 }

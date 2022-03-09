@@ -69,7 +69,6 @@ public class FieldHandler : MonoBehaviour
                         {
                             Object.Destroy(other.transform.GetChild(i).gameObject);
                         }
-                        print("Game over"); //TODO
                     }
                     break;
 

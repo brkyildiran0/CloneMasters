@@ -15,7 +15,8 @@ public class StickmanController : MonoBehaviour
     void Update()
     {
         GetComponent<Rigidbody>().velocity = centerReference.GetComponent<Rigidbody>().velocity;
-        transform.position = Vector3.MoveTowards(transform.position, centerReference.transform.position, 0.2f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, centerReference.transform.position, 0.3f * Time.deltaTime);
+        Time.timeScale = 1;
     }
 }
 
