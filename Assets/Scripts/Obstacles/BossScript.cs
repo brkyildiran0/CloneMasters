@@ -17,6 +17,16 @@ public class BossScript : MonoBehaviour
 
     void Update()
     {
+        if (HP == 0)
+        {
+            for (int i = 0; i < player.transform.childCount; i++)
+            {
+                player.transform.GetChild(i).GetComponent<StickmanController>().enabled = true;
+                player.transform.GetChild(i).transform.GetComponent<Animator>().Play("Running");
+            }
+            player.GetComponent<CenterReferenceController>().enabled = true;
+        }
+
         if (gameObject != null && transform.position.z - player.transform.position.z < 3.0f)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 2f * Time.deltaTime);
@@ -33,21 +43,11 @@ public class BossScript : MonoBehaviour
 
             StartCoroutine(MyCounter());
         }
-
-        if (HP == 0)
-        {
-            for (int i = 0; i < player.transform.childCount; i++)
-            {
-                player.transform.GetChild(i).GetComponent<StickmanController>().enabled = true;
-                player.transform.GetChild(i).transform.GetComponent<Animator>().Play("Running");
-            }
-            player.GetComponent<CenterReferenceController>().enabled = true;
-        }
     }
 
     IEnumerator MyCounter()
     {
-        yield return new WaitForSeconds(2f); //wait 1 second per interval
+        yield return new WaitForSeconds(1f); //wait 1 second per interval
         
         if (HP > 0 && player.transform.childCount > 0)
         {
